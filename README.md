@@ -50,7 +50,7 @@ Create a `.env.local` file with following details `PRIVATE_KEY` and `MUMBAI_URL 
 
 ## Verified Smart Contract
 
-PecuniaLock.sol: [0x45C38Ce5dDd5b34f2da4674cA0C3FeD18FB54dbb] (https://mumbai.polygonscan.com/address/0x45C38Ce5dDd5b34f2da4674cA0C3FeD18FB54dbb#code)
+PecuniaLock.sol: [0x45C38Ce5dDd5b34f2da4674cA0C3FeD18FB54dbb] 
 
 ## Inspiration
 
