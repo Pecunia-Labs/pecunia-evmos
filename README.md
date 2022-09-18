@@ -1,6 +1,6 @@
 # Pecunia
 
-![](./pecunia.jpeg)
+![](./images/pecunia.jpg)
 
 Pecunia provides clients the ability to ensure that their heirs will be able to get their share of the crypto and NFT once the client dies.
 # Architecture:
