@@ -42,7 +42,7 @@ contract HeirToken is ERC721, Ownable {
         return string(bstr);
     }
 
-    function mint(address user, string memory _tokenURI)
+    function mint(address user)
         public
         onlyOwner
         returns (uint256)
@@ -82,7 +82,8 @@ contract HeirToken is ERC721, Ownable {
         uri = svgToImageURI(finalSvg);
     }
 
-    function updateURI(uint256 tokenId) public {
+    function updateAmountAndURI(uint tokenId, uint amount) public onlyOwner {
+        tokenIdToAmount[tokenId] = amount;
         tokenIdToUri[tokenId] = getImageURI(tokenId);
     }
 

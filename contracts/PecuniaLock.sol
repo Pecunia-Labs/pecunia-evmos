@@ -259,7 +259,10 @@ contract PecuniaLock is Context, IERC721Receiver {
         }
         box.isActive[heirAddr] = true;
         // TODO: SOULBOUND NFTS
-        tokenId = heirToken.mint(heirAddr, "");
+        tokenId = heirToken.mint(heirAddr);
+        
+        heirToken.updateAmountAndURI(tokenId, amount);
+
         box.heirToTokenid[heirAddr] = tokenId;
         box.addresss.push(heirAddr);
 
@@ -382,7 +385,6 @@ contract PecuniaLock is Context, IERC721Receiver {
             "Approval for NFT Token not given"
         );
 
-        heirToken.burn(tokenId);
         usedProof[proof[0]] = true;
 
         box.withdrawSigned[heir] = true;
@@ -458,38 +460,6 @@ contract PecuniaLock is Context, IERC721Receiver {
         emit FundsTransferred(value, to);
     }
 
-    /**
-     * @notice Get the all the wills/boxes which have matured
-     * @return array of boxes/wills which have matured
-     */
-    function getMaturedBoxes() public view returns (bytes32[] memory) {
-        bytes32[] memory t_boxHashes = new bytes32[](boxHashes.length);
-        uint256 count = 0;
-        for (uint256 i = 0; i < boxHashes.length; i++) {
-            bytes32 bh = boxHashes[i];
-            SafeBox storage sb = boxhash2safebox[bh];
-            bool boxAdded = false;
-            for (uint256 j = 0; j < (sb.addresss).length; j++) {
-                if (
-                    block.timestamp - sb.timeAtWhichPaymentStarts >=
-                    sb.heirToInterval && // time is up
-                    sb.isActive[sb.addresss[j]] && // heir has already not received loan amount
-                    sb.withdrawSigned[sb.addresss[j]] && //heir has completed withdraw signature
-                    boxAdded == false //will or box is aready not added
-                ) {
-                    t_boxHashes[count] = bh;
-                    count++;
-                    boxAdded = true;
-                }
-            }
-        }
-        if (count != boxHashes.length) {
-            assembly {
-                mstore(t_boxHashes, count)
-            }
-        }
-        return t_boxHashes;
-    }
 
     function withdrawAssets(address owner, address hr) external {
         bytes32 bh = user2boxhash[owner];
