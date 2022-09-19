@@ -19,7 +19,7 @@ export default {
       },
     },
   },
-  defaultNetwork: "hardhat",
+  defaultNetwork: "evmos",
   networks: {
     hardhat: {
       allowUnlimitedContractSize: true,
