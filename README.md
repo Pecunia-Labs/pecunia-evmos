@@ -9,7 +9,7 @@ Pecunia provides clients the ability to ensure that their heirs will be able to 
 
 ## Smart Contracts and Zero-Knowledge Proof:
 
-The smart contracts are deployed on the Polygon Test and written in solidity. Here is a description of 3 main smart contracts:
+The smart contracts are deployed on the Evmos Test and written in solidity. Here is a description of 3 main smart contracts:
 
 1. HeirToken — An ERC721 token that provides an additional security layer and proof that a heir is entitled to receive assets.
 2. PecuniaLock — This is main smart contract responsible for registering the owner, reserving amounts to heir and withdraw signature 
